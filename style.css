@@ -1,0 +1,819 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 100%;
+    background: #F1F1F1;
+}
+
+*, html {
+    --primaryGradient: linear-gradient(93.12deg, #581B98 0.52%, #9C1DE7 100%);
+    --secondaryGradient: linear-gradient(268.91deg, #581B98 -2.14%, #9C1DE7 99.69%);
+    --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
+    --primary: #581B98;
+}
+
+.chatbox {
+    position: absolute;
+    bottom:0;
+    right: 0;
+    margin-right:25px;
+    margin-bottom:25px;
+    
+
+}
+
+.chatbox__support {
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--primaryBoxShadow);
+    background: #eee;
+    width: 350px;
+    height: 650px;
+    opacity: 0;
+    margin-bottom: 35px;
+
+
+    transition: all .5s ease-in-out;
+}
+
+
+.chatbox--active {
+    transform: translateY(-40px);
+    opacity: 1;
+}
+.calendar-close{
+    opacity: 0;
+}
+.chatbox__button {
+    border: transparent;
+    background: transparent;
+    bottom:0;
+    position: absolute;
+    right: 0;
+    
+
+}
+
+
+
+.chatbox_bottom {
+    bottom: 0;
+    right:0;
+
+}
+
+
+.send__button {
+    padding: 6px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    
+    background: transparent;
+ 
+}
+
+/* HEADER */
+.chatbox__header {
+    background: #01bde4;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    padding: 15px 20px;
+    height: 15%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: var(--primaryBoxShadow);
+    position: relative;
+}
+.chatbox__content--header{
+    margin-left:10px;
+}
+.chatbox__image--header {
+    background: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+}
+.logo{
+    width: 55px;
+    height: 55px;
+    margin-left: 1px;
+
+}
+
+.chatbox__heading--header {
+    font-size: 1.2rem;
+    color: white;
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;    src: url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+
+}
+
+.chatbox__description--header {
+    font-size: 14px;
+    color: rgb(160, 160, 160);
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;    src: url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+
+}
+#button_close{
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    position: absolute;
+    top:0;
+    right:0;
+    margin-right: 10px;;
+    margin-top: 10px;;
+
+    color: black;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+/* MESSAGES */
+.chatbox__messages {
+    padding: 10px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    background: #eaeef4;
+    display: flex;
+    height: 70%;
+    opacity: 1;
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;    src: url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+    flex-direction: column;
+    font-size: 15px;
+   
+    
+}
+.calendar-active .chatbox__messages {
+    opacity: 0.5;
+}
+
+
+.messages__container {
+    display: flex;
+    align-items: center;
+}
+
+.messages__container--operator {
+    justify-content: flex-start;
+}
+
+.messages__container--visitor {
+    justify-content: flex-end;
+}
+
+.chatbox__footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    background: white;
+    width: 100%;
+    height: 10%;
+    box-shadow: var(--secondaryBoxShadow);
+    bottom:5%;
+    position: absolute;
+}
+.chatbox__branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    width: 100%;
+    height: 5%;
+    box-shadow: var(--secondaryBoxShadow);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 10px 0;
+    font-size: 12px;
+    color: #666;
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+}
+
+
+.chatbox__footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.chatbox__send--footer {
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.send__icon {
+    width: 24px;
+    height: 24px;
+}
+.chat-button{
+    background: white;
+    border:1px solid rgb(214, 214, 214);
+    padding:3px;
+    margin-top:2px;
+    font-size: 13px;
+    
+    border-radius: 8px;
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;    src: url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+}
+
+.chat-buttons {
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+    width: auto;
+}
+
+.chat-button-start {
+    background: #01bde4;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;    src: url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+    border-radius: 8px;
+    position: relative;
+    margin-top: 9px;
+}
+
+.chat-button:hover {
+    background-color: #01bde4;
+    border-color: #002fff;
+}
+
+.chat-button:disabled {
+    background-color: #e9e9e9;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.blinking-dot {
+    position: absolute;
+    top: -6px;
+    left: 90%;
+    transform: translateX(-1%);
+    width: 10px;
+    height: 10px;
+    background: #01bde4;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.5);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+.messages__item {
+    margin-top: 10px;
+    background: #01bde4;
+    padding: 8px 12px;
+    max-width: 80%;
+    color: white;
+}
+
+.messages__item--visitor,
+.messages__item--typing {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;
+
+
+}
+
+.messages__item--operator {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: white;
+    color: black;
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.typing {
+    font-style: italic;
+    color: #818181;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+}
+
+.typing span {
+    display: inline-block;
+    animation: blink 1s infinite;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.bot_message{
+    display:flex;
+    align-items: center;
+
+}
+.logo_image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    align-items: center;
+}
+.chatbox__date-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+    position: relative;
+    text-align: center;
+}
+
+.chatbox__date-divider::before,
+.chatbox__date-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e2e8f0;
+    margin: 0 8px;
+}
+
+.chatbox__date-divider span {
+    background-color: #e2f1f6;
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: #3b8eb8;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.back-button {
+    color:black;
+    background: transparent;
+    border: none;
+    margin-right: auto;
+    padding:10px;
+    cursor: pointer;
+}
+.chatbox__date {
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+.online-indicator {
+    display: inline-block;
+    width: 10px;  
+    height: 10px;  
+    background-color: #4CAF50; 
+    border-radius: 50%;  
+    margin-right: 2px; 
+}
+.chatbox__date-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0;
+    position: relative;
+    text-align: center;
+}
+.chatbox__date-text {
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif !important;  /* Força a aplicação da fonte */
+    font-size: 10px !important;  
+    color: #01bde4 !important;  
+    font-weight: bold !important;  
+}
+
+.chatbox__date-divider::before,
+.chatbox__date-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #01bde4;
+    margin: 0 4px;
+}
+
+.chatbox__date-divider span {
+    background-color: #e2f1f6;
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: #3b8eb8;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.slct_day-back{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+.select_date {
+    position: absolute;
+    left: 50%;
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;
+    transform: translateX(-50%);
+    font-weight: 400;
+
+    white-space: nowrap; /* Impede o texto de quebrar para uma nova linha */
+}
+.hr_line{
+    border: 1px solid rgb(224, 223, 223);
+}
+.logo_image_msg {
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    align-items: center;
+}
+
+.calendar-container{
+    display:none;
+    flex-direction: column;
+    position: absolute;
+    bottom:0;
+    opacity: 1;
+    height: auto;
+    right:0;
+    z-index: 123456;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+
+
+    transform: translateY(100%); /* Start position (below the viewport) */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+
+}
+.text_chatbox_calendar{
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;    src: url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 23px;;
+    
+
+}
+
+
+.time-slots-container {
+    display: none;
+    padding: 20px;
+    position: absolute;
+    background: white;
+    border-radius: 10px;
+    bottom:0;
+    z-index: 123456;
+    width: 100%;
+
+}
+.button_select_date{
+    color:black;
+    padding:5px;
+    margin-right: 5px;
+    background: white;
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;
+    border-radius: 10px;
+    border:1px solid rgb(199, 199, 199);
+    margin-top:5px;
+    margin-bottom: 10px;
+
+
+}
+.button_select_date:hover{
+    background: rgb(221, 221, 221);
+}
+.time-slots button {
+    display: none;
+    margin: 10px 10px;
+    padding: 10px;
+    background: #00f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.time-slots button:hover {
+    background: #0056b3;
+}
+
+.time-slots-header {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+
+.flatpickr-calendar  {
+    margin:0 auto;
+    display:flex;
+    justify-content: end;
+    background-color: white;
+    box-shadow: none;
+    font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;    src: url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+
+
+}
+
+.flatpickr-day.selected {
+    background: #01bde4;
+    color: white;
+    
+}
+
+.flatpickr-day:hover {
+    background-color: white;
+}
+
+.flatpickr-day:not(.flatpickr-disabled) {
+    font-weight: bold;
+}
+
+.flatpickr-month {
+    background-color: #007bff;
+    color: white;
+}
+
+.flatpickr-weekdays {
+    background-color: white;
+    color: #333;
+}
+.image_chatbox{
+    width: 55px;
+    height: 55px;
+    border: 1px solid #01bde4;
+    border-radius: 100%;
+    box-shadow: var(--secondaryBoxShadow);
+
+}
+.flatpickr-current-month .numInputWrapper {
+    display: none;
+}
+@media (max-width: 768px) {
+   
+    .chatbox {
+        width: 100vw;
+        height: 100vh;
+        bottom: 0;
+        z-index: -123456;
+        right: 0;
+        border-radius: 0;
+        position: fixed; 
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    .chatbox--active {
+        transform: translateY(0);
+        opacity: 1;
+        z-index: 123456;
+
+    
+    }
+    
+    .back-button {
+        color:black;
+        background: transparent;
+        border: none;
+        padding:10px;
+        font-size: 20px;
+        font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;
+        cursor: pointer;
+    }
+    
+    .time-slots-container {
+        display: flex;
+        padding: 40px;
+        position: absolute;
+        background: white;
+        border-radius: 10px;
+        opacity: 1;
+        bottom:0;
+        width: 100%;
+        height: auto;
+
+    }
+    .time-slots-header{
+        font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;
+        font-size: 15px;
+
+    }
+    
+    .button_select_date{
+        color:black;
+        background: white;
+        padding:5px;
+        margin-right: 5px;
+        font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;
+        border-radius: 10px;
+        border:1px solid rgb(199, 199, 199);
+        margin-top:5px;
+        margin-bottom: 15px;
+
+
+    }
+    .button_select_date:hover{
+        background: rgb(221, 221, 221);
+    }
+
+    .calendar-container{
+        display:flex;
+        flex-direction: column;
+        position: absolute;
+        bottom:0;
+        opacity: 1;
+        right:0;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        width: 100%;
+
+        transition: all .5s ease-in-out;
+    }
+   
+    .chatbox__support {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+     
+    } 
+
+    .chatbox__button {
+        position: fixed;
+        margin-right:25px;
+        margin-bottom:25px;
+    }
+
+    
+    .chatbox_bottom {
+        text-align: right;
+        bottom: 0;
+        right: 0;
+
+    }
+
+
+    .chatbox__header {
+        padding: 10px;
+        background: #01bde4;
+        color: #01bde4;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 10%;
+        border-radius: 0;
+    }
+
+    .chatbox__header h4 {
+        margin: 0;
+    }
+
+    .time-slots{
+        display: flex;
+        flex-direction: row;
+
+    }
+ 
+    .time-slots button:hover {
+        background: #0056b3;
+    }
+    .chatbox__messages {
+        padding: 10px;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        background: #eaeef4;
+        display: flex;
+        flex-direction: column;
+        font-size: 15px;
+        height: 75%;
+    }
+
+    .messages__item--operator {
+        background: white;
+        color: black;
+        align-items: center;
+        font-family: 'SF UI Display', -apple-system, system-ui, sans-serif;
+
+
+    }
+
+    .chatbox__footer {
+        background: white;
+        display: flex;
+        width: 100%;
+        bottom:5%;
+        height: 10%;
+
+    }
+    .chatbox__footer input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .logo_image_msg {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+        align-items: center;
+        margin-top: 5px;
+    }
+
+    .chatbox__footer button {
+        margin-left: 10px;
+        padding: 15px;
+        background: white;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .send__button {
+        padding: 25px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background: transparent;
+    }
+
+    .return-button {
+        display: block;
+        background: transparent;
+        border: none;
+        font-size: 20px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .close-button {
+        background: transparent;
+        border: none;
+        font-size: 25px;
+        color: white;
+        cursor: pointer;
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 769px) {
+    .return-button {
+        display: none;
+    }
+
+    .close-button {
+        display: none;
+    }
+}
